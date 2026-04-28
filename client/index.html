@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OT Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-box">
+    <div class="spinner" id="spinner"></div>
+    <div class="overlay-title" id="overlay-title">Connecting...</div>
+    <div class="overlay-sub" id="overlay-sub">ws://localhost:3001</div>
+    <div class="name-input-wrap" id="name-wrap" style="display:none;">
+      <input id="name-input" placeholder="your name" maxlength="12" />
+      <button onclick="joinSession()">Join session</button>
+    </div>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-dot"></div>
+    OT Editor
+  </div>
+  <div class="topbar-right">
+    <div class="avatars" id="avatars"></div>
+    <div class="status-badge connected" id="status-badge">connected</div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="editor-side">
+    <div class="editor-header">
+      <span class="doc-name">shared-document.txt</span>
+      <span class="typing-status" id="typing-status"></span>
+    </div>
+    <textarea id="editor" placeholder="Start typing..."></textarea>
+  </div>
+
+  <div class="right-panel">
+    <div class="panel-section">
+      <div class="section-label">session stats</div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-val" id="stat-ops">0</div>
+          <div class="stat-label">ops applied</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-transforms">0</div>
+          <div class="stat-label">transforms</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-chars">0</div>
+          <div class="stat-label">doc length</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-users">0</div>
+          <div class="stat-label">online</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-label">connected</div>
+      <div id="clients-list"></div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-label">live changes</div>
+      <div class="feed-scroll" id="feed"></div>
+    </div>
+  </div>
+</div>
+<script src="client.js"></script>
+</body>
+</html>
